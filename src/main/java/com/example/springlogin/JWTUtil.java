@@ -1,9 +1,10 @@
-package com.example.JWT_nawaz;
+package com.example.springlogin;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
+
 import java.security.Key;
 import java.util.Date;
 @Component
@@ -12,7 +13,7 @@ public class JWTUtil {
             Keys.secretKeyFor(io.jsonwebtoken.SignatureAlgorithm.HS256);
     public String generateToken(String email) {
         Date now = new Date();
-        Date expiryDate = new Date(now.getTime() + 86400000); //Token expires in 24 hours
+        Date expiryDate = new Date(now.getTime() + 3600); //Token expires in 24 hours
         return Jwts.builder()
                 .setSubject(email)
                 .setIssuedAt(now)
